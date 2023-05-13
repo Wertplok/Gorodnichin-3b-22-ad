@@ -7,5 +7,6 @@ class Dog:
     def info(self):
         print(f'Имя: {self.name}, порода: {self.breed}, возраст: {self.age}')
 
+
 dog1 = Dog("Шарик", "овчарка", 5)
 dog1.info()

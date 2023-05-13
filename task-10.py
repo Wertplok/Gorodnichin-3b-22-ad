@@ -6,5 +6,6 @@ class Person:
     def info(self):
         print(f'Имя: {self.name}, возраст: {self.age}')
 
+
 man = Person("Alex", 25)
 man.info()

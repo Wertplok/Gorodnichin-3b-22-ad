@@ -8,5 +8,6 @@ class Student:
     def average_grade(self):
         return sum(self.grades.values())/len(self.grades.values())
 
+
 man = Student("Иван", "Иванов", 2, {"физика":4, "инфоматика":5})
 print(man.average_grade())

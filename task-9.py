@@ -6,5 +6,6 @@ class Rectangle:
     def area(self):
         return self.length*self.widh
 
+
 rect1 = Rectangle(3,4)
 print(rect1.area())

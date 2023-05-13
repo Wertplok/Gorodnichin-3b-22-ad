@@ -12,6 +12,7 @@ class BankAccount:
         self.__acc_balance-=amount
         print(f"Снято: {amount}, остаток: {self.__acc_balance}")
 
+
 wallet=BankAccount("Иван", 12345, 1_000_000)
 wallet.deposit(1000)
 wallet.withdraw(100_000)
