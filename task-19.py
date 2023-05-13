@@ -1,4 +1,4 @@
-class Figure:
+class GeometricFigure:
     def __init__(self, area, perimeter) -> None:
         self.area = area
         self.perimeter = perimeter
@@ -7,5 +7,5 @@ class Figure:
         print(f"площадь - {self.area}, периметр - {self.perimeter}")
 
 
-square=Figure(4, 8)
+square=GeometricFigure(4, 8)
 square.info()
