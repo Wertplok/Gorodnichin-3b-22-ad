@@ -1,3 +1,4 @@
 fruites = ["apple", "orange", "banana", "pineapple", "grape"]
 
-print(sorted(fruites, reverse=True))
+fruites.sort(reverse=True)
+print(fruites)
