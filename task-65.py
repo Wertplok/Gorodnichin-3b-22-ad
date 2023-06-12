@@ -82,7 +82,7 @@ def fight(fighter1: GameCharacter, fighter2: GameCharacter, log=False):
 
 def take_round(fighters, log=False):
     remaining_fighters = fighters.copy()
-    round_winners_list = []
+    fights_winners_list = []
     while remaining_fighters:
         fighter = remaining_fighters.pop()
         for opponent in remaining_fighters:
@@ -100,15 +100,14 @@ def take_round(fighters, log=False):
                 curr_fighters = curr_fighters[::-1]
             if len(fighters) > 2:
                 print(f"{winner.name} побеждает в схватке")
-            round_winners_list.append(winner)
-    round_winner = Counter(round_winners_list).most_common(1)[0][0]
-    return round_winner
+            fights_winners_list.append(winner)
+    return fights_winners_list
 
 def battle(num_fighters=2, num_rounds=3, log=False):
     fighters = init_fighters(num_fighters)
     curr_round = 0
-    winner = None
     winners_list = []
+    round_winners_list = []
     print(f"\nУчастники боя:")
     [print(fighter) for fighter in fighters]
     while curr_round < num_rounds:
@@ -119,10 +118,12 @@ def battle(num_fighters=2, num_rounds=3, log=False):
             print(f"\nУчастники:")
             [fighter.restore_health() for fighter in fighters]
             [print(fighter) for fighter in fighters]
-        winner = take_round(fighters, log)
-        print(f"\nПобедитель {curr_round} раунда - {winner}")
-        winners_list.append(winner)
-    battle_winner = Counter(winners_list).most_common(1)[0][0]
+        fights_winners_list = take_round(fighters, log)
+        round_winner = Counter(fights_winners_list).most_common(1)[0][0]
+        print(f"\nПобедитель {curr_round} раунда - {round_winner}")
+        round_winners_list.append(round_winner)
+        winners_list.extend(fights_winners_list)
+    battle_winner = Counter(filter(lambda x: x in round_winners_list, winners_list)).most_common(1)[0][0]
     print("\nБой окончен\n")
     battle_winner.restore_health()
     print(f"Побеждает {battle_winner}")
